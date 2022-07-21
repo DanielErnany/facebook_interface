@@ -1,4 +1,5 @@
 import 'package:facebook_interface/componentes/area_criar_postagem.dart';
+import 'package:facebook_interface/componentes/area_estoria.dart';
 import 'package:facebook_interface/componentes/botao_circulo.dart';
 import 'package:facebook_interface/uteis/paleta_cores.dart';
 import 'package:flutter/material.dart';
@@ -42,6 +43,15 @@ class HomeScreen extends StatelessWidget {
           ),
           SliverToBoxAdapter(
             child: AreaCriarPostagem(usuario: usuarioAtual),
+          ),
+          SliverPadding(
+            padding: EdgeInsets.fromLTRB(0, 10, 0, 5),
+            sliver: SliverToBoxAdapter(
+              child: AreaEstoria(
+                usuario: usuarioAtual,
+                estorias: estorias,
+              ),
+            ),
           ),
           SliverToBoxAdapter(
             child: Container(
