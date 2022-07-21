@@ -1,5 +1,5 @@
-import 'package:facebook_interface/screens/home_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:facebook_interface/screens/home_screen.dart';
 
 void main() {
   runApp(const MyApp());
