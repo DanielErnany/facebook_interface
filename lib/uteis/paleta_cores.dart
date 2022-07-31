@@ -11,4 +11,6 @@ class PaletaCores {
       Colors.black54,
     ],
   );
+
+  static const scaffold = Color(0xFFF0F2F5);
 }

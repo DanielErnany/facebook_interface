@@ -1,3 +1,4 @@
+import 'package:facebook_interface/uteis/paleta_cores.dart';
 import 'package:flutter/material.dart';
 import 'package:facebook_interface/screens/home_screen.dart';
 
@@ -15,6 +16,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue,
+        scaffoldBackgroundColor: PaletaCores.scaffold,
       ),
       home: const HomeScreen(),
     );
