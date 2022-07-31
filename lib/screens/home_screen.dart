@@ -1,6 +1,8 @@
 import 'package:facebook_interface/componentes/area_criar_postagem.dart';
 import 'package:facebook_interface/componentes/area_estoria.dart';
 import 'package:facebook_interface/componentes/botao_circulo.dart';
+import 'package:facebook_interface/componentes/cartao_postagem.dart';
+import 'package:facebook_interface/dados/models/postagem.dart';
 import 'package:facebook_interface/uteis/paleta_cores.dart';
 import 'package:flutter/material.dart';
 import 'package:line_icons/line_icons.dart';
@@ -45,7 +47,7 @@ class HomeScreen extends StatelessWidget {
             child: AreaCriarPostagem(usuario: usuarioAtual),
           ),
           SliverPadding(
-            padding: EdgeInsets.fromLTRB(0, 10, 0, 5),
+            padding: const EdgeInsets.fromLTRB(0, 10, 0, 5),
             sliver: SliverToBoxAdapter(
               child: AreaEstoria(
                 usuario: usuarioAtual,
@@ -53,10 +55,15 @@ class HomeScreen extends StatelessWidget {
               ),
             ),
           ),
-          SliverToBoxAdapter(
-            child: Container(
-              height: 2000,
-              color: Colors.white,
+          SliverList(
+            delegate: SliverChildBuilderDelegate(
+              (context, index) {
+                Postagem postagem = postagens[index];
+                return CartaoPostagem(
+                  postagem: postagem,
+                );
+              },
+              childCount: postagens.length,
             ),
           ),
         ],
