@@ -1,5 +1,8 @@
 import 'package:facebook_interface/componentes/navegacao_abas.dart';
+import 'package:facebook_interface/componentes/navegacao_abas_desktop.dart';
+import 'package:facebook_interface/dados/dados.dart';
 import 'package:facebook_interface/screens/home_screen.dart';
+import 'package:facebook_interface/uteis/responsivo.dart';
 import 'package:flutter/material.dart';
 
 class PrincipalScreen extends StatefulWidget {
@@ -30,19 +33,40 @@ class _PrincipalScreenState extends State<PrincipalScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final bool isDesktop = Responsivo.isDesktop(context);
+
+    final larguraTela = MediaQuery.of(context).size.width;
+
     return DefaultTabController(
       length: _icones.length,
       child: Scaffold(
+        appBar: isDesktop
+            ? PreferredSize(
+                child: NavegacaoAbasDesktop(
+                  usuario: usuarioAtual,
+                  icones: _icones,
+                  onTap: (index) {
+                    setState(() {
+                      _indiceAbaSelecionada = index;
+                    });
+                  },
+                  indiceAbaSelecionada: _indiceAbaSelecionada,
+                ),
+                preferredSize: Size(larguraTela, 65),
+              )
+            : null,
         body: TabBarView(children: _telas),
-        bottomNavigationBar: NavegacaoAbas(
-          icones: _icones,
-          onTap: (index) {
-            setState(() {
-              _indiceAbaSelecionada = index;
-            });
-          },
-          indiceAbaSelecionada: _indiceAbaSelecionada,
-        ),
+        bottomNavigationBar: isDesktop
+            ? null
+            : NavegacaoAbas(
+                icones: _icones,
+                onTap: (index) {
+                  setState(() {
+                    _indiceAbaSelecionada = index;
+                  });
+                },
+                indiceAbaSelecionada: _indiceAbaSelecionada,
+              ),
       ),
     );
   }
