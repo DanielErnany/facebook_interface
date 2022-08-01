@@ -1,3 +1,4 @@
+import 'package:facebook_interface/screens/principal_screen.dart';
 import 'package:facebook_interface/uteis/paleta_cores.dart';
 import 'package:flutter/material.dart';
 import 'package:facebook_interface/screens/home_screen.dart';
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         scaffoldBackgroundColor: PaletaCores.scaffold,
       ),
-      home: const HomeScreen(),
+      home: const PrincipalScreen(),
     );
   }
 }
