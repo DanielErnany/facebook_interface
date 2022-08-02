@@ -3,6 +3,7 @@ import 'package:facebook_interface/componentes/area_estoria.dart';
 import 'package:facebook_interface/componentes/botao_circulo.dart';
 import 'package:facebook_interface/componentes/cartao_postagem.dart';
 import 'package:facebook_interface/componentes/lista_contatos.dart';
+import 'package:facebook_interface/componentes/lista_opcoes.dart';
 import 'package:facebook_interface/dados/models/postagem.dart';
 import 'package:facebook_interface/uteis/paleta_cores.dart';
 import 'package:facebook_interface/uteis/responsivo.dart';
@@ -95,7 +96,10 @@ class HomeDesktop extends StatelessWidget {
       children: [
         Flexible(
           flex: 2,
-          child: Container(color: Colors.orange),
+          child: Padding(
+            padding: const EdgeInsets.all(12),
+            child: ListaOpcoes(usuario: usuarioAtual),
+          ),
         ),
         const Spacer(),
         Flexible(
