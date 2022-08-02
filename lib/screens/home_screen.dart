@@ -106,32 +106,6 @@ class HomeDesktop extends StatelessWidget {
           flex: 5,
           child: CustomScrollView(
             slivers: [
-              SliverAppBar(
-                backgroundColor: Colors.white,
-                centerTitle: false,
-                floating: true,
-                title: const Text(
-                  'facebook',
-                  style: TextStyle(
-                    color: PaletaCores.AZUL_FACEBOOK,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 28,
-                    letterSpacing: -1.2,
-                  ),
-                ),
-                actions: [
-                  BotaoCirculo(
-                    icone: Icons.search,
-                    iconeTamanho: 30,
-                    onPressed: () {},
-                  ),
-                  BotaoCirculo(
-                    icone: LineIcons.facebookMessenger,
-                    iconeTamanho: 30,
-                    onPressed: () {},
-                  ),
-                ],
-              ),
               SliverPadding(
                 padding: const EdgeInsets.fromLTRB(0, 10, 0, 5),
                 sliver: SliverToBoxAdapter(
