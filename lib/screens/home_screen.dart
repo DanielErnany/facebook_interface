@@ -30,13 +30,16 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Responsivo(
-        mobile: HomeMobile(
-          scrollController: _scrollController,
-        ),
-        desktop: HomeDesktop(
-          scrollController: _scrollController,
+    return GestureDetector(
+      onTap: () => FocusScope.of(context).unfocus(),
+      child: Scaffold(
+        body: Responsivo(
+          mobile: HomeMobile(
+            scrollController: _scrollController,
+          ),
+          desktop: HomeDesktop(
+            scrollController: _scrollController,
+          ),
         ),
       ),
     );
