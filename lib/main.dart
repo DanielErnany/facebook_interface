@@ -1,7 +1,6 @@
 import 'package:facebook_interface/screens/principal_screen.dart';
 import 'package:facebook_interface/uteis/paleta_cores.dart';
 import 'package:flutter/material.dart';
-import 'package:facebook_interface/screens/home_screen.dart';
 
 void main() {
   runApp(const MyApp());
