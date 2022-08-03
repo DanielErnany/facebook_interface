@@ -55,7 +55,9 @@ class _PrincipalScreenState extends State<PrincipalScreen> {
                 preferredSize: Size(larguraTela, 65),
               )
             : null,
-        body: TabBarView(children: _telas),
+        body: SafeArea(
+          child: TabBarView(children: _telas),
+        ),
         bottomNavigationBar: isDesktop
             ? null
             : NavegacaoAbas(
