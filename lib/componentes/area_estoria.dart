@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:facebook_interface/componentes/imagem_perfil.dart';
 import 'package:facebook_interface/dados/dados.dart';
 import 'package:facebook_interface/dados/models/estoria.dart';
+import 'package:facebook_interface/uteis/my_custom_scroll_behavior.dart';
 import 'package:facebook_interface/uteis/paleta_cores.dart';
 import 'package:facebook_interface/uteis/responsivo.dart';
 import 'package:flutter/material.dart';
@@ -25,38 +26,43 @@ class AreaEstoria extends StatelessWidget {
     return Container(
       height: 200,
       color: isDesktop ? Colors.transparent : Colors.white,
-      child: ListView.builder(
-        padding: const EdgeInsets.symmetric(
-          horizontal: 8,
-          vertical: 10,
-        ),
-        scrollDirection: Axis.horizontal,
-        itemCount: 1 + estorias.length,
-        itemBuilder: (context, index) {
-          if (index == 0) {
-            Estoria estoriaUsuario = Estoria(
-              usuario: usuarioAtual,
-              urlImagem: usuarioAtual.urlImagem,
-            );
+      // Permite rolagem horizontal utilizando o mouse no design para web
+      child: ScrollConfiguration(
+        // Classe criada para configurar e permitir a rolagem das estorias na horizontal na web
+        behavior: MyCustomScrollBehavior(),
+        child: ListView.builder(
+          padding: const EdgeInsets.symmetric(
+            horizontal: 8,
+            vertical: 10,
+          ),
+          scrollDirection: Axis.horizontal,
+          itemCount: 1 + estorias.length,
+          itemBuilder: (context, index) {
+            if (index == 0) {
+              Estoria estoriaUsuario = Estoria(
+                usuario: usuarioAtual,
+                urlImagem: usuarioAtual.urlImagem,
+              );
+
+              return Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 4),
+                child: CartaoEstoria(
+                  estoria: estoriaUsuario,
+                  adicionarEstoria: true,
+                ),
+              );
+            }
+
+            Estoria estoria = estorias[index - 1];
 
             return Padding(
               padding: const EdgeInsets.symmetric(horizontal: 4),
               child: CartaoEstoria(
-                estoria: estoriaUsuario,
-                adicionarEstoria: true,
+                estoria: estoria,
               ),
             );
-          }
-
-          Estoria estoria = estorias[index - 1];
-
-          return Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 4),
-            child: CartaoEstoria(
-              estoria: estoria,
-            ),
-          );
-        },
+          },
+        ),
       ),
     );
   }
